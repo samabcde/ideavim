@@ -580,6 +580,13 @@ abstract class VimTestCase {
     assertEquals(expected, selected)
   }
 
+  fun assertSelection(expected: String?, start: Int, end: Int) {
+    val selected = fixture.editor.selectionModel
+    assertEquals(start, selected.selectionStart)
+    assertEquals(end, selected.selectionEnd)
+    assertEquals(expected, selected.selectedText)
+  }
+
   fun assertCommandOutput(command: String, expected: String) {
     enterCommand(command)
     assertExOutput(expected)
